@@ -1,6 +1,13 @@
 {
   "name": "react-use-promise-hook",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "A hook for easily handling async promise-based tasks",
+  "keywords": [
+    "react",
+    "promise",
+    "hook",
+    "usePromise"
+  ],
   "scripts": {
     "lint": "eslint ."
   },
