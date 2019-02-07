@@ -1,0 +1,20 @@
+{
+  "name": "react-use-promise-hook",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erodactyl/react-use-promise-hook"
+  },
+  "bugs": {
+    "url": "https://github.com/erodactyl/react-use-promise-hook/issues"
+  },
+  "dependencies": {
+    "react": "16.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0"
+  }
+}
