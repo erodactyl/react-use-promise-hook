@@ -7,25 +7,33 @@ const FIRE = 'FIRE';
 const asyncReducer = (state, action) => {
   switch (action.type) {
   case SET_DATA:
-    return { ...state, data: action.data, error: null, pending: false };
+    return {
+      error: null,
+      pending: false,
+      data: action.mergeStrategy(state.data, action.data),
+    };
   case SET_ERROR:
-    return { ...state, data: null, error: action.error, pending: false };
+    return { data: null, error: action.error, pending: false };
   case FIRE:
-    return { ...state, data: null, error: null, pending: true };
+    return { data: state.data, error: null, pending: true };
   default:
     return state;
   }
 };
 
-const usePromise = (_fire) => {
+const defaultMergeStrategy = (_, newData) => newData;
+
+const usePromise = (_fire, { variables: _vars } = {}) => {
   const [{ data, error, pending }, dispatch] =
     useReducer(asyncReducer, { data: null, error: null, pending: true });
-  const setData = data => dispatch({ type: SET_DATA, data });
+  const setData = ({ data, mergeStrategy }) => dispatch({ type: SET_DATA, data, mergeStrategy });
   const setError = error => dispatch({ type: SET_ERROR, error });
-  const fire = () => {
+  const fire = ({ variables = _vars, mergeStrategy = defaultMergeStrategy } = {}) => {
     dispatch({ type: FIRE });
-    _fire()
-      .then(setData)
+    _fire(variables)
+      .then((data) => {
+        setData({ data, mergeStrategy });
+      })
       .catch(setError);
   };
   useEffect(fire, []);
