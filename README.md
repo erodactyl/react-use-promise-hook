@@ -12,7 +12,7 @@ yarn add react-use-promise-hook
 
 # Usage
 
-```
+```js
 const counterPromise = () => {
 	return new Promise(res => {
 		setTimeout(() => res(Math.random()), 1000);

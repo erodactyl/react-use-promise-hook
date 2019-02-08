@@ -1,6 +1,6 @@
 {
   "name": "react-use-promise-hook",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A hook for easily handling async promise-based tasks",
   "keywords": [
     "react",
